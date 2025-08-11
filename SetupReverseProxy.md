@@ -38,4 +38,5 @@ docker compose down
 
 ## Next Steps
 - using your DDNS service get a valid lets encrypt certificate in the certificates tab of Nginx Proxy Manager
-- you can now use this reverse proxy to create nice urls for your various services on the server. Just open the interface, write the target ip address and port and the subdomain and its done! 
+- you can now use this reverse proxy to create nice urls for your various services on the server. Just open the interface, write the target ip address and port and the subdomain and its done!
+- in order to use this on local domains be sure to use somehting like pihole to route that domains traffic to an internal ip!!
