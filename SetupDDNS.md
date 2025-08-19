@@ -37,6 +37,8 @@ crontab -e
 */5 * * * * ~/dynudns/dynu.sh >/dev/null 2>&1 
 ```
 
+To use this domain with let's encrypt for a SSL use your proxy manager and insert API key where it asks for it when trying to create a certificate.
+
 ## Next Steps
 Now you can use this dynamic dns to route to your server.  
 - For example in a wireguard client config you could use sub.domain.com:51820 as the destination for your traffic. 
