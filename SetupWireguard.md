@@ -51,6 +51,20 @@ Now port forward port 51820 on your router to allow vpn traffic that reaches you
 
 
 ## How to use
+you need to enable ip forwarding if not already enabled
+```
+sudo nano /etc/sysctl.conf
+
+# Add/uncomment this:
+# net.ipv4.ip_forward = 1
+```
+
+to make wireguard interface auto start on boot
+```
+sudo systemctl enable --now wg-quick@wg0
+```
+to remove that just replace enable with disable
+
 to start the interface run
 ```
 sudo wg-quick up wg0
