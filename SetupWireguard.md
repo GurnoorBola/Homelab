@@ -33,8 +33,8 @@ now use your favorite text editor and add this to the file filling in the keys w
 Address = 10.8.0.1/24
 PrivateKey = <server's privatekey>
 ListenPort = 51820
-PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o wlan0 -j MASQUERADE
 SaveConfig = true
 
 ```
@@ -43,7 +43,7 @@ This sets the vpn ip of the server to be 10.8.0.1 and listens on port 51820 for 
 PostUp and PostDown create and remove certain iptables rules on the starting and removal of the interface: 
 - `iptables -A FORWARD -i %i -j ACCEPT` allows VPN traffic to pass into the WireGuard interface and be forwarded to its destination.
 - `iptables -A FORWARD -o %i -j ACCEPT` allows VPN traffic to leave through the WireGuard interface and be forwarded to its destination.
-- `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE` ensures that packets have the correct source IP address in order to ensure packets return to the server instead of trying to reach the internal WireGuard IP.
+- `iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE` ensures that packets have the correct source IP address in order to ensure packets return to the server instead of trying to reach the internal WireGuard IP.
 
 
 ## Router setup
